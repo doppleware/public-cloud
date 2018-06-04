@@ -554,10 +554,29 @@
                         "value": "[parameters('Subnet4Prefix')]"
                     },
                     "Subnet5Name": {
-                        "value": "[parameters('Subnet4Name')]"
+                        "value": "[parameters('Subnet5Name')]"
                     },
                     "Subnet5Prefix": {
-                        "value": "[parameters('Subnet4Prefix')]"
+                        "value": "[parameters('Subnet5Prefix')]"
+                    },
+
+                    "Subnet6Name": {
+                        "value": "[parameters('Subnet6Name')]"
+                    },
+                    "Subnet6Prefix": {
+                        "value": "[parameters('Subnet6Prefix')]"
+                    },
+                    "Subnet7Name": {
+                        "value": "[parameters('Subnet7Name')]"
+                    },
+                    "Subnet7Prefix": {
+                        "value": "[parameters('Subnet7Prefix')]"
+                    },
+                    "Subnet8Name": {
+                        "value": "[parameters('Subnet8Name')]"
+                    },
+                    "Subnet8Prefix": {
+                        "value": "[parameters('Subnet8Prefix')]"
                     },
                    "vnetExistingRGName": {
                         "value": "[parameters('virtualNetworkExistingRGName')]"
