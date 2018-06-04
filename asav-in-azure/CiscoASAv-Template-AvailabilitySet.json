@@ -153,7 +153,7 @@
         },
         "Subnet5Name": {
             "type": "string",
-            "defaultValue": "dmz4",
+            "defaultValue": "dmz3",
             "metadata": {
                 "description": "Subnet 5 Name"
             }
