@@ -153,7 +153,7 @@
         },
         "Subnet5Name": {
             "type": "string",
-            "defaultValue": "dmz2",
+            "defaultValue": "dmz4",
             "metadata": {
                 "description": "Subnet 5 Name"
             }
@@ -161,6 +161,69 @@
         "subnet5StartAddress" : {
             "type" : "string",
             "defaultValue": "10.41.4.62",
+            "metadata" : {
+                "description" : "Subnet 4 Starting IP Address - ASAv's IP in subnet5"
+            }
+        },
+                "Subnet6Prefix": {
+            "type": "string",
+            "defaultValue": "10.41.5.0/24",
+            "metadata": {
+                "description": "Subnet 4 Prefix (example 10.0.3.0/24)"
+            }
+        },
+        "Subnet6Name": {
+            "type": "string",
+            "defaultValue": "dmz4",
+            "metadata": {
+                "description": "Subnet 5 Name"
+            }
+        },
+        "subnet6StartAddress" : {
+            "type" : "string",
+            "defaultValue": "10.41.5.62",
+            "metadata" : {
+                "description" : "Subnet 4 Starting IP Address - ASAv's IP in subnet5"
+            }
+        },
+        "Subnet7Prefix": {
+            "type": "string",
+            "defaultValue": "10.41.6.0/24",
+            "metadata": {
+                "description": "Subnet 4 Prefix (example 10.0.3.0/24)"
+            }
+        },
+        "Subnet7Name": {
+            "type": "string",
+            "defaultValue": "dmz5",
+            "metadata": {
+                "description": "Subnet 5 Name"
+            }
+        },
+        "subnet7StartAddress" : {
+            "type" : "string",
+            "defaultValue": "10.41.6.62",
+            "metadata" : {
+                "description" : "Subnet 4 Starting IP Address - ASAv's IP in subnet5"
+            }
+        },
+        "Subnet8Prefix": {
+            "type": "string",
+            "defaultValue": "10.41.7.0/24",
+            "metadata": {
+                "description": "Subnet 4 Prefix (example 10.0.3.0/24)"
+            }
+        },
+        "Subnet8Name": {
+            "type": "string",
+            "defaultValue": "dmz6",
+            "metadata": {
+                "description": "Subnet 5 Name"
+            }
+        },
+        "subnet8StartAddress" : {
+            "type" : "string",
+            "defaultValue": "10.41.7.62",
             "metadata" : {
                 "description" : "Subnet 4 Starting IP Address - ASAv's IP in subnet5"
             }
