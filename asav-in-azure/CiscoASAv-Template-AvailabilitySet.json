@@ -602,10 +602,10 @@
                     "routeTable6Name" :{
                       "value" : "[concat(parameters('Subnet6Name'),'-ASAv-RouteTable')]"
                     },
-                    "routeTable6Name" :{
+                    "routeTable7Name" :{
                       "value" : "[concat(parameters('Subnet7Name'),'-ASAv-RouteTable')]"
                     },
-                    "routeTable7Name" :{
+                    "routeTable8Name" :{
                       "value" : "[concat(parameters('Subnet8Name'),'-ASAv-RouteTable')]"
                     }
 
