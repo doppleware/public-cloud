@@ -144,6 +144,27 @@
                 "description" : "Subnet 4 Starting IP Address - ASAv's IP in subnet4"
             }
         },
+        "Subnet5Prefix": {
+            "type": "string",
+            "defaultValue": "10.41.4.0/24",
+            "metadata": {
+                "description": "Subnet 4 Prefix (example 10.0.3.0/24)"
+            }
+        },
+        "Subnet5Name": {
+            "type": "string",
+            "defaultValue": "dmz2",
+            "metadata": {
+                "description": "Subnet 5 Name"
+            }
+        },
+        "subnet5StartAddress" : {
+            "type" : "string",
+            "defaultValue": "10.41.4.62",
+            "metadata" : {
+                "description" : "Subnet 4 Starting IP Address - ASAv's IP in subnet5"
+            }
+        },
          "authenticationType": {
             "type": "string",
             "defaultValue": "password",
@@ -281,6 +302,8 @@
         "subnet2Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet2Name'))]",
         "subnet3Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet3Name'))]",
         "subnet4Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet4Name'))]",
+        "subnet5Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet5Name'))]",
+
         "nsgname": "[concat(parameters('vmName'),'-SSH-SecurityGroup')]",
         "apiVer": "2015-06-15",
         "publicIPAddressType": "Dynamic",
@@ -423,7 +446,9 @@
                 "[concat('Microsoft.Network/routeTables/', parameters('Subnet1Name'),'-ASAv-RouteTable')]",
                 "[concat('Microsoft.Network/routeTables/', parameters('Subnet2Name'),'-ASAv-RouteTable')]",
                 "[concat('Microsoft.Network/routeTables/', parameters('Subnet3Name'),'-ASAv-RouteTable')]",
-                "[concat('Microsoft.Network/routeTables/', parameters('Subnet4Name'),'-ASAv-RouteTable')]"
+                "[concat('Microsoft.Network/routeTables/', parameters('Subnet4Name'),'-ASAv-RouteTable')]",
+                "[concat('Microsoft.Network/routeTables/', parameters('Subnet5Name'),'-ASAv-RouteTable')]"
+
             ],
             "properties": {
                 "mode": "Incremental",
@@ -465,6 +490,12 @@
                     "Subnet4Prefix": {
                         "value": "[parameters('Subnet4Prefix')]"
                     },
+                    "Subnet5Name": {
+                        "value": "[parameters('Subnet4Name')]"
+                    },
+                    "Subnet5Prefix": {
+                        "value": "[parameters('Subnet4Prefix')]"
+                    },
                    "vnetExistingRGName": {
                         "value": "[parameters('virtualNetworkExistingRGName')]"
                     },
@@ -479,6 +510,9 @@
                     },
                     "routeTable4Name" :{
                       "value" : "[concat(parameters('Subnet4Name'),'-ASAv-RouteTable')]"
+                    },
+                    "routeTable5Name" :{
+                      "value" : "[concat(parameters('Subnet5Name'),'-ASAv-RouteTable')]"
                     }
 
 
@@ -552,6 +586,24 @@
                         "addressPrefix": "[parameters('Subnet1Prefix')]",
                         "nextHopType": "VirtualAppliance",
                         "nextHopIpAddress": "[parameters('subnet4StartAddress')]"
+                    }
+                }
+              ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/routeTables",
+            "name": "[concat(parameters('Subnet5Name'),'-ASAv-RouteTable')]",
+            "apiVersion": "[variables('apiVer')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "routes": [
+                  {
+                    "name": "Route-Subnet1-To-ASAv",
+                    "properties": {
+                        "addressPrefix": "[parameters('Subnet1Prefix')]",
+                        "nextHopType": "VirtualAppliance",
+                        "nextHopIpAddress": "[parameters('subnet5StartAddress')]"
                     }
                 }
               ]
@@ -654,6 +706,30 @@
                             "privateIPAddress" : "[parameters('subnet4StartAddress')]",
                             "subnet": {
                                 "id": "[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork', '2015-01-01').outputs.subnet4Ref.value]"
+                            }
+                        }
+                    }
+                ],
+                "enableIPForwarding": true
+            }
+        },
+         {
+            "apiVersion": "[variables('apiVer')]",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[concat(parameters('vmName'),'-Nic4')]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]"
+            ],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAllocationMethod": "Static",
+                            "privateIPAddress" : "[parameters('subnet5StartAddress')]",
+                            "subnet": {
+                                "id": "[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork', '2015-01-01').outputs.subnet5Ref.value]"
                             }
                         }
                     }
