@@ -256,14 +256,15 @@
                 "artifactsBaseUrl": "",
                 "description": "URL to acquire other templates"
             },
-            "defaultValue": "https://raw.githubusercontent.com/ewaterwo/armtemplates/master/4nic"
+            "defaultValue": "https://raw.githubusercontent.com/ewaterwo/armtemplates/master/8nic"
         },
         "vmSize" : {
             "type" : "string",
-            "defaultValue" : "Standard_D3_v2",
+            "defaultValue" : "Standard_B2s",
             "allowedValues" : [
                 "Standard_D3",
-                "Standard_D3_v2"
+                "Standard_D3_v2",
+                "Standard_B2s"
             ],
             "metadata" : {
                 "description" : "Size of the Virtual Machine"
