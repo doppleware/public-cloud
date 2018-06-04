@@ -722,24 +722,6 @@
         },
         {
             "type": "Microsoft.Network/routeTables",
-            "name": "[concat(parameters('Subnet6Name'),'-ASAv-RouteTable')]",
-            "apiVersion": "[variables('apiVer')]",
-            "location": "[parameters('location')]",
-            "properties": {
-                "routes": [
-                  {
-                    "name": "Route-Subnet1-To-ASAv",
-                    "properties": {
-                        "addressPrefix": "[parameters('Subnet1Prefix')]",
-                        "nextHopType": "VirtualAppliance",
-                        "nextHopIpAddress": "[parameters('subnet6StartAddress')]"
-                    }
-                }
-              ]
-            }
-        },
-        {
-            "type": "Microsoft.Network/routeTables",
             "name": "[concat(parameters('Subnet7Name'),'-ASAv-RouteTable')]",
             "apiVersion": "[variables('apiVer')]",
             "location": "[parameters('location')]",
