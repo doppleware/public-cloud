@@ -366,6 +366,9 @@
         "subnet3Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet3Name'))]",
         "subnet4Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet4Name'))]",
         "subnet5Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet5Name'))]",
+        "subnet6Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet6Name'))]",
+        "subnet7Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet7Name'))]",
+        "subnet8Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet8Name'))]",
 
         "nsgname": "[concat(parameters('vmName'),'-SSH-SecurityGroup')]",
         "apiVer": "2015-06-15",
